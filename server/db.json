@@ -1,0 +1,74 @@
+{
+  "vehicles": [
+    {
+      "id": "1",
+      "plate": "ABC-123",
+      "brand": "Toyota",
+      "model": "Hilux",
+      "year": 2020,
+      "type": "PICKUP",
+      "loadCapacity": 1000,
+      "tankCapacity": 80,
+      "status": "AVAILABLE",
+      "currentMileage": 15000,
+      "lastMaintenance": "2023-01-15T00:00:00.000Z",
+      "active": true
+    },
+    {
+      "id": "2",
+      "plate": "XYZ-789",
+      "brand": "Mercedes-Benz",
+      "model": "Actros",
+      "year": 2019,
+      "type": "TRUCK",
+      "loadCapacity": 5000,
+      "tankCapacity": 200,
+      "status": "IN_ROUTE",
+      "currentMileage": 45000,
+      "lastMaintenance": "2023-03-10T00:00:00.000Z",
+      "active": true
+    },
+    {
+      "id": "3",
+      "plate": "DEF-456",
+      "brand": "Volkswagen",
+      "model": "Transporter",
+      "year": 2021,
+      "type": "VAN",
+      "loadCapacity": 800,
+      "tankCapacity": 70,
+      "status": "IN_MAINTENANCE",
+      "currentMileage": 8000,
+      "lastMaintenance": "2023-05-20T00:00:00.000Z",
+      "active": true
+    },
+    {
+      "id": "",
+      "plate": "ABC-123",
+      "brand": "Toyota",
+      "model": "Hilux",
+      "year": 2000,
+      "type": "TRUCK",
+      "loadCapacity": 1000,
+      "tankCapacity": 90,
+      "status": "AVAILABLE",
+      "currentMileage": 14000,
+      "lastMaintenance": "2025-05-22T05:00:00.000Z",
+      "active": true
+    },
+    {
+      "id": "",
+      "plate": "BCA-123",
+      "brand": "Andre",
+      "model": "Serrati",
+      "year": 2020,
+      "type": "VAN",
+      "loadCapacity": 1000,
+      "tankCapacity": 22,
+      "status": "IN_MAINTENANCE",
+      "currentMileage": 10000,
+      "lastMaintenance": "2025-05-23T05:00:00.000Z",
+      "active": true
+    }
+  ]
+}

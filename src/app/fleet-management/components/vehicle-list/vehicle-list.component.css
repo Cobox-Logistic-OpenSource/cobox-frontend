@@ -1,0 +1,64 @@
+﻿.vehicle-list-container {
+  padding: 20px;
+  margin: 20px;
+  border-radius: 8px;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.table-container {
+  position: relative;
+  min-height: 200px;
+  max-height: 600px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-available {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+.status-in-route {
+  background-color: #bbdefb;
+  color: #1565c0;
+}
+
+.status-maintenance {
+  background-color: #fff9c4;
+  color: #f57f17;
+}
+
+.status-out-of-service {
+  background-color: #ffcdd2;
+  color: #c62828;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
