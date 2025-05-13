@@ -1,0 +1,170 @@
+﻿.content-container {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.filter-card {
+  margin-bottom: 24px;
+}
+
+.filter-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.filter-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  align-items: start;
+  margin-top: 8px;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.records-card {
+  overflow: hidden;
+}
+
+.records-table {
+  width: 100%;
+}
+
+.purpose-chip {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.purpose-delivery {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+}
+
+.purpose-pickup {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+}
+
+.purpose-maintenance {
+  background-color: #fff8e1;
+  color: #f57f17;
+}
+
+.purpose-transfer {
+  background-color: #e8eaf6;
+  color: #3f51b5;
+}
+
+.purpose-other {
+  background-color: #f5f5f5;
+  color: #616161;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.distance-cell {
+  font-weight: 500;
+}
+
+.loading-container, .error-container, .empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  text-align: center;
+}
+
+.loading-container p, .error-container p, .empty-state p {
+  margin-top: 16px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.error-container {
+  color: #f44336;
+}
+
+.empty-state mat-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.empty-state button {
+  margin-top: 16px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .content-container {
+    padding: 16px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .filter-form {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .filter-actions button {
+    width: 100%;
+  }
+
+  .action-buttons {
+    flex-wrap: wrap;
+  }
+}
+
+/* Estilos para la tabla de Angular Material */
+.mat-mdc-header-cell {
+  font-weight: 600;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+}
+
+.mat-mdc-cell {
+  font-size: 14px;
+}
+
+.mat-mdc-row:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
