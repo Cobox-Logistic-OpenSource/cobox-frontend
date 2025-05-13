@@ -43,7 +43,7 @@
       "active": true
     },
     {
-      "id": "",
+      "id": "4",
       "plate": "ABC-123",
       "brand": "Toyota",
       "model": "Hilux",
@@ -57,7 +57,7 @@
       "active": true
     },
     {
-      "id": "",
+      "id": "5",
       "plate": "BCA-123",
       "brand": "Andre",
       "model": "Serrati",
@@ -69,6 +69,49 @@
       "currentMileage": 10000,
       "lastMaintenance": "2025-05-23T05:00:00.000Z",
       "active": true
+    }
+  ],
+  "mileage-records": [
+    {
+      "id": "1",
+      "vehicleId": "1",
+      "date": "2023-05-11T08:00:00.000Z",
+      "startOdometer": 15000,
+      "endOdometer": 15250,
+      "distance": 250,
+      "purpose": "DELIVERY",
+      "route": "Lima - Callao",
+      "driverId": "D001",
+      "notes": "Entrega regular de mercancía",
+      "createdBy": "ADMIN",
+      "createdAt": "2023-05-11T16:30:00.000Z"
+    },
+    {
+      "id": "2",
+      "vehicleId": "2",
+      "date": "2023-05-12T09:15:00.000Z",
+      "startOdometer": 45000,
+      "endOdometer": 45600,
+      "distance": 600,
+      "purpose": "PICKUP",
+      "route": "Lima - Huacho",
+      "driverId": "D002",
+      "notes": "Recojo de mercadería",
+      "createdBy": "ADMIN",
+      "createdAt": "2023-05-12T18:45:00.000Z"
+    },
+    {
+      "id": "3",
+      "vehicleId": "3",
+      "date": "2023-05-13T07:30:00.000Z",
+      "startOdometer": 8000,
+      "endOdometer": 8050,
+      "distance": 50,
+      "purpose": "MAINTENANCE",
+      "driverId": "D001",
+      "notes": "Visita al taller mecánico",
+      "createdBy": "ADMIN",
+      "createdAt": "2023-05-13T09:00:00.000Z"
     }
   ]
 }
