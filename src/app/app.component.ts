@@ -1,93 +1,94 @@
 import { Component } from '@angular/core';
-                    import { RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
-                    @Component({
-                      selector: 'app-root',
-                      template: `
-                        <div class="app-container">
-                          <header class="app-header">
-                            <div class="logo">CoBox Logistic</div>
-                            <nav class="main-nav">
-                              <a routerLink="/fuel-management" routerLinkActive="active">Gestión de Combustible</a>
-                            </nav>
-                          </header>
-                          <main class="app-content">
-                            <router-outlet></router-outlet>
-                          </main>
-                        </div>
-                      `,
-                      styles: [`
-                        .app-container {
-                          display: flex;
-                          flex-direction: column;
-                          min-height: 100vh;
-                        }
+@Component({
+  selector: 'app-root',
+  template: `
+    <div class="app-container">
+      <header class="app-header">
+        <div class="logo">CoBox Logistic</div>
+        <nav class="main-nav">
+          <a routerLink="/fuel-management" routerLinkActive="active">Gestión de Combustible</a>
+        </nav>
+      </header>
+      <main class="app-content">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  `,
+  styles: [`
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-                        .app-header {
-                          background-color: #1a73e8;
-                          color: white;
-                          padding: 0 20px;
-                          height: 64px;
-                          display: flex;
-                          align-items: center;
-                          justify-content: space-between;
-                          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-                        }
+    .app-header {
+      background-color: #1a73e8;
+      color: white;
+      padding: 0 20px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
 
-                        .logo {
-                          font-size: 20px;
-                          font-weight: 500;
-                        }
+    .logo {
+      font-size: 20px;
+      font-weight: 500;
+    }
 
-                        .main-nav {
-                          height: 100%;
-                          display: flex;
-                          align-items: center;
-                        }
+    .main-nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
 
-                        .main-nav a {
-                          color: white;
-                          text-decoration: none;
-                          height: 100%;
-                          display: flex;
-                          align-items: center;
-                          padding: 0 15px;
-                          font-weight: 500;
-                          position: relative;
-                        }
+    .main-nav a {
+      color: white;
+      text-decoration: none;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+      font-weight: 500;
+      position: relative;
+    }
 
-                        .main-nav a.active::after {
-                          content: '';
-                          position: absolute;
-                          bottom: 0;
-                          left: 0;
-                          width: 100%;
-                          height: 3px;
-                          background-color: white;
-                        }
+    .main-nav a. {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: white;
+    }
 
-                        .app-content {
-                          flex: 1;
-                          background-color: #f5f5f5;
-                        }
+    .app-content {
+      flex: 1;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
 
-                        @media (max-width: 768px) {
-                          .app-header {
-                            padding: 0 10px;
-                          }
+    @media (max-width: 768px) {
+      .app-header {
+        padding: 0 10px;
+      }
 
-                          .logo {
-                            font-size: 18px;
-                          }
+      .logo {
+        font-size: 18px;
+      }
 
-                          .main-nav a {
-                            padding: 0 10px;
-                          }
-                        }
-                      `],
-                      standalone: true,
-                      imports: [RouterModule],
-                    })
-                    export class App {
-                      title = 'CoBox Logistic';
-                    }
+      .main-nav a {
+        padding: 0 10px;
+      }
+    }
+  `],
+  standalone: true,
+  imports: [RouterModule],
+})
+export class AppComponent {
+  title = 'CoBox Logistic';
+}

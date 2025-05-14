@@ -1,16 +1,32 @@
 {
-  "fuelRecords": [
+  "fuel-records": [
     {
-      "id": 1,
-      "vehicle": "ABC-123",
-      "date": "2023-10-01T10:00:00",
-      "type": "Gasolina",
-      "quantity": 50,
-      "cost": 100,
-      "mileage": 15000,
-      "station": "Estación 1",
-      "location": "Ciudad A",
-      "notes": "Sin observaciones"
+      "id": "1",
+      "vehicleId": 1,
+      "vehiclePlate": "ABC-123",
+      "date": "2023-05-15T10:30:00.000Z",
+      "fuelType": "Diésel",
+      "quantity": 15.5,
+      "totalCost": 75.2,
+      "currentMileage": 15500,
+      "station": "Petro Perú",
+      "location": "Av. La Marina 123",
+      "invoiceNumber": "F001-123456",
+      "notes": "Llenado completo"
+    },
+    {
+      "id": 0,
+      "vehicleId": 123,
+      "vehiclePlate": "ACB-123",
+      "date": "2025-05-14T00:00:00.000Z",
+      "fuelType": "Gasolina",
+      "quantity": 123,
+      "totalCost": 13213,
+      "currentMileage": 123,
+      "station": "Ojales",
+      "location": "Lima la gris",
+      "invoiceNumber": "21313132",
+      "notes": "HOLA"
     }
   ]
 }
