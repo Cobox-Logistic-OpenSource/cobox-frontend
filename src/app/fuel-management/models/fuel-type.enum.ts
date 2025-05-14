@@ -1,8 +1,8 @@
 ﻿export enum FuelType {
-  DIESEL = 'DIESEL',
-  GASOLINE = 'GASOLINE',
-  PREMIUM_GASOLINE = 'PREMIUM_GASOLINE',
-  ELECTRIC = 'ELECTRIC',
-  NATURAL_GAS = 'NATURAL_GAS',
-  BIODIESEL = 'BIODIESEL'
+  DIESEL = 'Diésel',
+  GASOLINE = 'Gasolina',
+  PREMIUM_GASOLINE = 'Gasolina Premium',
+  NATURAL_GAS = 'Gas Natural',
+  ELECTRICITY = 'Electricidad',
+  BIO_DIESEL = 'Bio-Diésel'
 }
