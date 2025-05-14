@@ -1,0 +1,135 @@
+.fuel-records-container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin: 0;
+  color: #1a73e8;
+  font-size: 24px;
+}
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.date-filters {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.fuel-records-table {
+  width: 100%;
+}
+
+.mat-column-actions {
+  width: 120px;
+  text-align: center;
+}
+
+.mat-column-efficiency,
+.mat-column-quantity,
+.mat-column-totalCost {
+  text-align: right;
+}
+
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.no-data-cell {
+  padding: 20px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.fuel-type-badge {
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.diesel-color {
+  background-color: #ffd54f;
+  color: #000;
+}
+
+.gasoline-color {
+  background-color: #81c784;
+  color: #000;
+}
+
+.premium-color {
+  background-color: #4fc3f7;
+  color: #000;
+}
+
+.good-efficiency {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.average-efficiency {
+  color: #ff9800;
+  font-weight: bold;
+}
+
+.poor-efficiency {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.no-data {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .date-filters {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .filter-actions {
+    margin-left: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .mat-column-station,
+  .mat-column-currentMileage {
+    display: none;
+  }
+}

@@ -1,0 +1,78 @@
+﻿/* Estilo específico para los botones de acción */
+.action-buttons {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.view-action-btn, .edit-action-btn, .delete-action-btn, .more-action-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  color: white;
+  border-radius: 4px;
+}
+
+.view-action-btn {
+  background-color: #00bcd4; /* turquesa */
+}
+
+.edit-action-btn {
+  background-color: #0d6efd; /* azul */
+}
+
+.delete-action-btn {
+  background-color: #dc3545; /* rojo */
+}
+
+.more-action-btn {
+  background-color: #6c757d; /* gris */
+  position: relative;
+}
+
+/* Estilo del menú desplegable de estados */
+.status-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.status-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  background-color: white;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  padding: 8px 0;
+}
+
+.status-dropdown:hover .status-menu {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  clear: both;
+  text-align: left;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* Para centrar verticalmente los botones en la tabla */
+.actions-col {
+  vertical-align: middle;
+}

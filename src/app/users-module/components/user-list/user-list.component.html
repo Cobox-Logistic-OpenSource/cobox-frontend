@@ -1,0 +1,40 @@
+<div class="content-container">
+  <div class="module-header">
+    <h1 class="module-title">Gestión de Usuarios</h1>
+    <button class="btn btn-success" (click)="addUser()">
+      Nuevo Usuario
+    </button>
+  </div>
+  
+  <table class="module-table">
+    <thead>
+      <tr>
+        <th>Nombres y Apellidos</th>
+        <th>DNI</th>
+        <th>Nivel</th>
+        <th>Fecha Creación</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.dni }}</td>
+        <td>
+          <span class="user-badge" [ngClass]="user.level === 'Administrador' ? 'badge-admin' : 'badge-driver'">
+            {{ user.level }}
+          </span>
+        </td>
+        <td>{{ user.createdAt | date:'dd/MM/yyyy HH:mm' }}</td>
+        <td class="actions-column">
+          <button class="btn btn-success btn-primary-action" (click)="editUser(user.id)">
+            Editar
+          </button>
+          <button class="btn btn-success btn-danger-action" (click)="deleteUser(user.id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,151 @@
+﻿<div class="vehicle-form-container">
+  <div class="form-header">
+    <h2>{{ isEditMode ? 'Editar Vehículo' : 'Nuevo Vehículo' }}</h2>
+    <button mat-button color="primary" (click)="cancel()">
+      <mat-icon>arrow_back</mat-icon> Volver
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>{{ isEditMode ? 'Cargando información del vehículo...' : 'Guardando vehículo...' }}</p>
+  </div>
+
+  <div *ngIf="error" class="error-container">
+    <mat-icon color="warn">error</mat-icon>
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()" class="form-content" *ngIf="!loading">
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Placa</mat-label>
+        <input matInput formControlName="plate" placeholder="Ejemplo: ABC-123">
+        <mat-error *ngIf="plateField?.hasError('required')">
+          La placa es obligatoria
+        </mat-error>
+        <mat-error *ngIf="plateField?.hasError('pattern')">
+          Formato de placa inválido (debe tener 5-10 caracteres alfanuméricos/guiones)
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Marca</mat-label>
+        <input matInput formControlName="brand" placeholder="Ejemplo: Toyota">
+        <mat-error *ngIf="brandField?.hasError('required')">
+          La marca es obligatoria
+        </mat-error>
+        <mat-error *ngIf="brandField?.hasError('minlength') || brandField?.hasError('maxlength')">
+          La marca debe tener entre 2 y 30 caracteres
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Modelo</mat-label>
+        <input matInput formControlName="model" placeholder="Ejemplo: Hilux">
+        <mat-error *ngIf="modelField?.hasError('required')">
+          El modelo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="modelField?.hasError('minlength') || modelField?.hasError('maxlength')">
+          El modelo debe tener entre 2 y 30 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Año</mat-label>
+        <input matInput type="number" formControlName="year" placeholder="Ejemplo: 2020">
+        <mat-error *ngIf="yearField?.hasError('required')">
+          El año es obligatorio
+        </mat-error>
+        <mat-error *ngIf="yearField?.hasError('min') || yearField?.hasError('max')">
+          El año debe estar entre 1970 y {{ currentYear + 1 }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo de Vehículo</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of vehicleTypes" [value]="type">
+            {{ getVehicleTypeLabel(type) }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="typeField?.hasError('required')">
+          El tipo de vehículo es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let status of vehicleStatuses" [value]="status">
+            {{ getVehicleStatusLabel(status) }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="statusField?.hasError('required')">
+          El estado es obligatorio
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Capacidad de Carga (kg)</mat-label>
+        <input matInput type="number" formControlName="loadCapacity" placeholder="Ejemplo: 1000">
+        <mat-error *ngIf="loadCapacityField?.hasError('required')">
+          La capacidad de carga es obligatoria
+        </mat-error>
+        <mat-error *ngIf="loadCapacityField?.hasError('min')">
+          La capacidad de carga debe ser mayor a 0
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Capacidad del Tanque (litros)</mat-label>
+        <input matInput type="number" formControlName="tankCapacity" placeholder="Ejemplo: 80">
+        <mat-error *ngIf="tankCapacityField?.hasError('required')">
+          La capacidad del tanque es obligatoria
+        </mat-error>
+        <mat-error *ngIf="tankCapacityField?.hasError('min')">
+          La capacidad del tanque debe ser mayor a 0
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Kilometraje Actual</mat-label>
+        <input matInput type="number" formControlName="currentMileage" placeholder="Ejemplo: 15000">
+        <mat-error *ngIf="currentMileageField?.hasError('required')">
+          El kilometraje actual es obligatorio
+        </mat-error>
+        <mat-error *ngIf="currentMileageField?.hasError('min')">
+          El kilometraje actual debe ser mayor o igual a 0
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Último Mantenimiento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="lastMaintenance">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row active-toggle">
+      <mat-slide-toggle formControlName="active" color="primary">
+        {{ activeField?.value ? 'Vehículo Activo' : 'Vehículo Inactivo' }}
+      </mat-slide-toggle>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" mat-button (click)="cancel()">Cancelar</button>
+      <button type="submit" mat-raised-button color="primary" [disabled]="vehicleForm.invalid">
+        {{ isEditMode ? 'Actualizar' : 'Guardar' }}
+      </button>
+    </div>
+  </form>
+</div>

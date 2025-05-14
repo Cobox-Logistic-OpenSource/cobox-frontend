@@ -1,0 +1,82 @@
+<div class="content-container">
+  <div class="module-header">
+    <h1 class="module-title">Programaciones</h1>
+  </div>
+  
+  <div class="module-filters">
+    <form [formGroup]="filterForm">
+      <div class="filter-row">
+        <div class="filter-group">
+          <label for="id">Código</label>
+          <input id="id" formControlName="id" type="text" class="form-control">
+        </div>
+        
+        <div class="filter-group">
+          <label for="plate">Placa</label>
+          <input id="plate" formControlName="plate" type="text" class="form-control">
+        </div>
+        
+        <div class="filter-group">
+          <label for="startDate">Fecha Inicio</label>
+          <input id="startDate" formControlName="startDate" type="date" class="form-control">
+        </div>
+        
+        <div class="filter-group">
+          <label for="endDate">Fecha Fin</label>
+          <input id="endDate" formControlName="endDate" type="date" class="form-control">
+        </div>
+      </div>
+      
+      <div class="filter-actions">
+        <button type="button" class="btn btn-primary" (click)="searchSchedules()">
+          Filtrar
+        </button>
+        <button type="button" class="btn btn-outline-secondary" (click)="clearFilters()">
+          Limpiar
+        </button>
+      </div>
+    </form>
+  </div>
+  
+  <div class="section-header">
+    <h2 class="section-title">Programaciones</h2>
+    <button class="btn btn-success" (click)="importSchedules()">
+      Importar
+    </button>
+  </div>
+  
+  <table class="module-table">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Fecha Prog.</th>
+        <th>Fecha Serv.</th>
+        <th>Origen</th>
+        <th>Destino</th>
+        <th>Conductor</th>
+        <th>Placa</th>
+        <th>Hora Salida</th>
+        <th>Costo Final</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let schedule of schedules">
+        <td>{{ schedule.id }}</td>
+        <td>{{ schedule.scheduleDate | date:'dd/MM/yyyy' }}</td>
+        <td>{{ schedule.serviceDate | date:'dd/MM/yyyy' }}</td>
+        <td>{{ schedule.origin }}</td>
+        <td>{{ schedule.destination }}</td>
+        <td>{{ schedule.driver }}</td>
+        <td>{{ schedule.plate }}</td>
+        <td>{{ schedule.departureTime }}</td>
+        <td>S/ {{ schedule.finalCost | number:'1.2-2' }}</td>
+        <td>
+          <button class="action-btn btn-info-action" (click)="viewDetails(schedule.id)">
+            Ver
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,13 @@
+﻿export enum VehicleType {
+  TRUCK = 'TRUCK',
+  VAN = 'VAN',
+  REFRIGERATED = 'REFRIGERATED',
+  PICKUP = 'PICKUP'
+}
+
+export enum VehicleStatus {
+  AVAILABLE = 'AVAILABLE',
+  IN_ROUTE = 'IN_ROUTE',
+  IN_MAINTENANCE = 'IN_MAINTENANCE',
+  OUT_OF_SERVICE = 'OUT_OF_SERVICE'
+}

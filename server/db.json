@@ -1,0 +1,561 @@
+{
+  "vehicles": [
+    {
+      "id": "1",
+      "plate": "ABC-123",
+      "brand": "Toyota",
+      "model": "Hilux",
+      "year": 2020,
+      "type": "PICKUP",
+      "loadCapacity": 1000,
+      "tankCapacity": 80,
+      "status": "AVAILABLE",
+      "currentMileage": 15000,
+      "lastMaintenance": "2023-01-15T00:00:00.000Z",
+      "active": true
+    },
+    {
+      "id": "2",
+      "plate": "XYZ-789",
+      "brand": "Mercedes-Benz",
+      "model": "Actros",
+      "year": 2019,
+      "type": "TRUCK",
+      "loadCapacity": 5000,
+      "tankCapacity": 200,
+      "status": "IN_ROUTE",
+      "currentMileage": 45000,
+      "lastMaintenance": "2023-03-10T00:00:00.000Z",
+      "active": true
+    },
+    {
+      "id": "3",
+      "plate": "DEF-456",
+      "brand": "Volkswagen",
+      "model": "Transporter",
+      "year": 2021,
+      "type": "VAN",
+      "loadCapacity": 800,
+      "tankCapacity": 70,
+      "status": "IN_MAINTENANCE",
+      "currentMileage": 8000,
+      "lastMaintenance": "2023-05-20T00:00:00.000Z",
+      "active": true
+    },
+    {
+      "id": "4",
+      "plate": "ABC-123",
+      "brand": "Toyota",
+      "model": "Hilux",
+      "year": 2000,
+      "type": "TRUCK",
+      "loadCapacity": 1000,
+      "tankCapacity": 90,
+      "status": "AVAILABLE",
+      "currentMileage": 14000,
+      "lastMaintenance": "2025-05-22T05:00:00.000Z",
+      "active": true
+    },
+    {
+      "id": "5",
+      "plate": "BCA-123",
+      "brand": "Andre",
+      "model": "Serrati",
+      "year": 2020,
+      "type": "VAN",
+      "loadCapacity": 1000,
+      "tankCapacity": 22,
+      "status": "IN_MAINTENANCE",
+      "currentMileage": 10000,
+      "lastMaintenance": "2025-05-23T05:00:00.000Z",
+      "active": true
+    }
+  ],
+  "mileage-records": [
+    {
+      "id": "1",
+      "vehicleId": "1",
+      "date": "2023-05-11T08:00:00.000Z",
+      "startOdometer": 15000,
+      "endOdometer": 15250,
+      "distance": 250,
+      "purpose": "DELIVERY",
+      "route": "Lima - Callao",
+      "driverId": "D001",
+      "notes": "Entrega regular de mercancía",
+      "createdBy": "ADMIN",
+      "createdAt": "2023-05-11T16:30:00.000Z"
+    },
+    {
+      "id": "2",
+      "vehicleId": "2",
+      "date": "2023-05-12T09:15:00.000Z",
+      "startOdometer": 45000,
+      "endOdometer": 45600,
+      "distance": 600,
+      "purpose": "PICKUP",
+      "route": "Lima - Huacho",
+      "driverId": "D002",
+      "notes": "Recojo de mercadería",
+      "createdBy": "ADMIN",
+      "createdAt": "2023-05-12T18:45:00.000Z"
+    },
+    {
+      "id": "3",
+      "vehicleId": "3",
+      "date": "2023-05-13T07:30:00.000Z",
+      "startOdometer": 8000,
+      "endOdometer": 8050,
+      "distance": 50,
+      "purpose": "MAINTENANCE",
+      "driverId": "D001",
+      "notes": "Visita al taller mecánico",
+      "createdBy": "ADMIN",
+      "createdAt": "2023-05-13T09:00:00.000Z"
+    }
+  ],
+  "fuel-records": [
+    {
+      "id": "1",
+      "vehicleId": 13221,
+      "vehiclePlate": "ABC-123",
+      "date": "2025-05-22T00:00:00.000Z",
+      "fuelType": "Gasolina Premium",
+      "quantity": 0.09,
+      "totalCost": 0.07,
+      "currentMileage": 10,
+      "station": "AVERAA",
+      "location": "DASDAS",
+      "invoiceNumber": "12312241",
+      "notes": "DASDASD"
+    },
+    {
+      "id": "2252",
+      "vehicleId": 9,
+      "vehiclePlate": "ABC-123",
+      "date": "2025-05-14T00:00:00.000Z",
+      "fuelType": "Gasolina",
+      "quantity": 0.1,
+      "totalCost": 0.15,
+      "currentMileage": 18,
+      "station": "aaaaaa",
+      "location": "aaaaaaaaaaa",
+      "invoiceNumber": "111111111111111",
+      "notes": "aaaaaaaaaaaaaaa"
+    }
+  ],
+  "services": [
+    {
+      "id": "P04345",
+      "date": "2025-05-14",
+      "route": "Afe Surquillo - Ancon - Afe Surquillo",
+      "driver": "DIEGO ENRIQUE QUISPE AGUILAR",
+      "plate": "AJY-748",
+      "departureTime": "06:00",
+      "status": "COMPLETED"
+    },
+    {
+      "id": "P04346",
+      "date": "2025-05-14",
+      "route": "Afe Surquillo - Afe Zapallal - Puente Piedra - Afe Surquillo",
+      "driver": "LENIN CARRASCO ACUÑA",
+      "plate": "DOP-704",
+      "departureTime": "06:00",
+      "status": "COMPLETED"
+    },
+    {
+      "id": "P04339",
+      "date": "2025-05-14",
+      "route": "Afe Surquillo - La Molina - Los Olivos - Av. Abancay - Cercado de Lima - Jesus María - Afe Surquillo",
+      "driver": "SERGIO CASAS RIOS",
+      "plate": "ALP-934",
+      "departureTime": "06:00",
+      "status": "COMPLETED"
+    },
+    {
+      "id": "P04347",
+      "date": "2025-05-14",
+      "route": "Afe Surquillo - Breña - Afe Surquillo",
+      "driver": "WILBER JESUS POMA CONDORI",
+      "plate": "C3I-795",
+      "departureTime": "07:00",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": "P04340",
+      "date": "2025-05-14",
+      "route": "Afe Surquillo - Miraflores - Estadio Surquillo - Afe Surquillo - Av. Abancay - Afe Surquillo",
+      "driver": "CARLOS ALBERTO MAGNO TORRES",
+      "plate": "ALP-807",
+      "departureTime": "07:30",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": "P04342",
+      "date": "2025-05-14",
+      "route": "Afe Surquillo - La Victoria - Av. Argentina - Afe Surquillo",
+      "driver": "ALAIN CALDERON FLORES",
+      "plate": "AJX-937",
+      "departureTime": "08:00",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": "P04348",
+      "date": "2025-05-14",
+      "route": "Afe Surquillo - Breña - Afe Surquillo",
+      "driver": "CLIDER MARCIAL CIPRIANO CASIO",
+      "plate": "ADS-936",
+      "departureTime": "08:00",
+      "status": "PENDING"
+    },
+    {
+      "id": "P04341",
+      "date": "2025-05-14",
+      "route": "Afe Surquillo - La Victoria - Afe Surquillo",
+      "driver": "RICK KEVIN CORDOVA AGUILAR",
+      "plate": "D7L-789",
+      "departureTime": "08:00",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": "P04343",
+      "date": "2025-05-14",
+      "route": "Afe Surquillo - Av. Nicolas de Pierola (Gerencia General) - Av. Paseo de la Republica (Palacio de Justicia) - Afe Surquillo",
+      "driver": "JESUS MAXIMO SHERON FLORES",
+      "plate": "ALP-849",
+      "departureTime": "14:00",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": "P04337",
+      "date": "2025-05-14",
+      "route": "Afe Surquillo - La Victoria - Aeropuerto - Afe Surquillo",
+      "driver": "JOSE DAVID DAVILA CUBAS",
+      "plate": "D7L-789",
+      "departureTime": "17:30",
+      "status": "COMPLETED"
+    },
+    {
+      "id": "P04344",
+      "date": "2025-05-14",
+      "route": "Afe Surquillo - La Victoria - Aeropuerto - Afe Surquillo",
+      "driver": "JOSE DAVID DAVILA CUBAS",
+      "plate": "D7L-726",
+      "departureTime": "17:30",
+      "status": "PENDING"
+    },
+    {
+      "id": "P04349",
+      "date": "2025-05-15",
+      "route": "Afe Guardia Civil - Afe Surquillo - Lima - Afe Guardia Civil",
+      "driver": "MOISES ISRAEL CHAVEZ VELASQUEZ",
+      "plate": "2306ec",
+      "departureTime": "08:00",
+      "status": "PENDING"
+    }
+  ],
+  "fuel-records-summary": [
+    {
+      "serviceId": "P04340",
+      "totalRecords": 6,
+      "initialDate": "2025-05-14T07:39:00",
+      "finalDate": "2025-05-14T11:54:00",
+      "totalFuel": 0,
+      "plates": "ALP-807",
+      "id": "fcea"
+    },
+    {
+      "serviceId": "P04345",
+      "totalRecords": 6,
+      "initialDate": "2025-05-14T05:50:00",
+      "finalDate": "2025-05-14T11:53:00",
+      "totalFuel": 11.43,
+      "plates": "AJY-748",
+      "id": "c0d1"
+    },
+    {
+      "serviceId": "P04342",
+      "totalRecords": 4,
+      "initialDate": "2025-05-14T09:21:00",
+      "finalDate": "2025-05-14T11:38:00",
+      "totalFuel": 0,
+      "plates": "AJX-937",
+      "id": "d422"
+    },
+    {
+      "serviceId": "P04343",
+      "totalRecords": 1,
+      "initialDate": "2025-05-14T11:37:00",
+      "finalDate": "2025-05-14T11:37:00",
+      "totalFuel": 0,
+      "plates": "ALP-849",
+      "id": "e97c"
+    },
+    {
+      "serviceId": "P04339",
+      "totalRecords": 6,
+      "initialDate": "2025-05-14T05:46:00",
+      "finalDate": "2025-05-14T11:32:00",
+      "totalFuel": 0,
+      "plates": "ALP-934",
+      "id": "c656"
+    },
+    {
+      "serviceId": "P04346",
+      "totalRecords": 3,
+      "initialDate": "2025-05-14T06:05:00",
+      "finalDate": "2025-05-14T11:26:00",
+      "totalFuel": 11.43,
+      "plates": "DOP-704",
+      "id": "41cf"
+    },
+    {
+      "serviceId": "P04341",
+      "totalRecords": 2,
+      "initialDate": "2025-05-14T09:01:00",
+      "finalDate": "2025-05-14T09:46:00",
+      "totalFuel": 0,
+      "plates": "D7L-789",
+      "id": "7729"
+    },
+    {
+      "serviceId": "P04347",
+      "totalRecords": 3,
+      "initialDate": "2025-05-14T06:57:00",
+      "finalDate": "2025-05-14T08:08:00",
+      "totalFuel": 5,
+      "plates": "C3I-795",
+      "id": "ec85"
+    },
+    {
+      "serviceId": "P04337",
+      "totalRecords": 5,
+      "initialDate": "2025-05-13T17:39:00",
+      "finalDate": "2025-05-14T05:32:00",
+      "totalFuel": 0,
+      "plates": "D7L-789",
+      "id": "d57f"
+    },
+    {
+      "serviceId": "P04336",
+      "totalRecords": 2,
+      "initialDate": "2025-05-13T08:56:00",
+      "finalDate": "2025-05-13T18:35:00",
+      "totalFuel": 0,
+      "plates": "BMU-824",
+      "id": "8e2d"
+    }
+  ],
+  "schedules": [
+    {
+      "id": "P04349",
+      "scheduleDate": "2025-05-14",
+      "serviceDate": "2025-05-15",
+      "origin": "Afe surquillo",
+      "destination": "Afe Guardia Civil - Afe Surquillo - Lima - Afe Guardia Civil",
+      "driver": "MOISES ISRAEL CHAVEZ VELASQUEZ",
+      "plate": "2306ec",
+      "departureTime": "08:00",
+      "finalCost": 0
+    },
+    {
+      "id": "P04339",
+      "scheduleDate": "2025-05-13",
+      "serviceDate": "2025-05-14",
+      "origin": "Afe surquillo",
+      "destination": "Afe Surquillo - La Molina - Los Olivos - Av. Abancay - Cercado de Lima - Jesus María - Afe Surquillo",
+      "driver": "SERGIO CASAS RIOS",
+      "plate": "ALP-934",
+      "departureTime": "06:00",
+      "finalCost": 0
+    },
+    {
+      "id": "P04340",
+      "scheduleDate": "2025-05-13",
+      "serviceDate": "2025-05-14",
+      "origin": "Afe surquillo",
+      "destination": "Afe Surquillo - Miraflores - Estadio Surquillo - Afe Surquillo - Av. Abancay - Afe Surquillo",
+      "driver": "CARLOS ALBERTO MAGNO TORRES",
+      "plate": "ALP-807",
+      "departureTime": "07:30",
+      "finalCost": 90
+    },
+    {
+      "id": "P04341",
+      "scheduleDate": "2025-05-13",
+      "serviceDate": "2025-05-14",
+      "origin": "Afe surquillo",
+      "destination": "Afe Surquillo - La Victoria - Afe Surquillo",
+      "driver": "RICK KEVIN CORDOVA AGUILAR",
+      "plate": "D7L-789",
+      "departureTime": "08:00",
+      "finalCost": 90
+    },
+    {
+      "id": "P04342",
+      "scheduleDate": "2025-05-13",
+      "serviceDate": "2025-05-14",
+      "origin": "Afe surquillo",
+      "destination": "Afe Surquillo - La Victoria - Av. Argentina - Afe Surquillo",
+      "driver": "ALAIN CALDERON FLORES",
+      "plate": "AJX-937",
+      "departureTime": "08:00",
+      "finalCost": 0
+    },
+    {
+      "id": "P04343",
+      "scheduleDate": "2025-05-13",
+      "serviceDate": "2025-05-14",
+      "origin": "Afe surquillo",
+      "destination": "Afe Surquillo - Av. Nicolas de Pierola (Gerencia General) - Av. Paseo de la Republica (Palacio de Justicia) - Afe Surquillo",
+      "driver": "JESUS MAXIMO SHERON FLORES",
+      "plate": "ALP-849",
+      "departureTime": "14:00",
+      "finalCost": 90
+    },
+    {
+      "id": "P04344",
+      "scheduleDate": "2025-05-13",
+      "serviceDate": "2025-05-14",
+      "origin": "Afe surquillo",
+      "destination": "Afe Surquillo - La Victoria - Aeropuerto - Afe Surquillo",
+      "driver": "JOSE DAVID DAVILA CUBAS",
+      "plate": "D7L-726",
+      "departureTime": "17:30",
+      "finalCost": 0
+    },
+    {
+      "id": "P04345",
+      "scheduleDate": "2025-05-13",
+      "serviceDate": "2025-05-14",
+      "origin": "Afe surquillo",
+      "destination": "Afe Surquillo - Ancon - Afe Surquillo",
+      "driver": "DIEGO ENRIQUE QUISPE AGUILAR",
+      "plate": "AJY-748",
+      "departureTime": "06:00",
+      "finalCost": 150
+    },
+    {
+      "id": "P04346",
+      "scheduleDate": "2025-05-13",
+      "serviceDate": "2025-05-14",
+      "origin": "Afe surquillo",
+      "destination": "Afe Surquillo - Afe Zapallal - Puente Piedra - Afe Surquillo",
+      "driver": "LENIN CARRASCO ACUÑA",
+      "plate": "DOP-704",
+      "departureTime": "06:00",
+      "finalCost": 150
+    },
+    {
+      "id": "P04347",
+      "scheduleDate": "2025-05-13",
+      "serviceDate": "2025-05-14",
+      "origin": "Afe surquillo",
+      "destination": "Afe Surquillo - Breña - Afe Surquillo",
+      "driver": "WILBER JESUS POMA CONDORI",
+      "plate": "C3I-795",
+      "departureTime": "07:00",
+      "finalCost": 90
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "ALAIN CALDERON FLORES",
+      "dni": "71914672",
+      "level": "Conductor",
+      "createdAt": "2025-04-15T08:41:00"
+    },
+    {
+      "id": "2",
+      "name": "CARLOS ALBERTO MAGNO TORRES",
+      "dni": "10027210",
+      "level": "Conductor",
+      "createdAt": "2025-03-29T12:02:00"
+    },
+    {
+      "id": "3",
+      "name": "CLIDER MARCIAL CIPRIANO CASIO",
+      "dni": "44107445",
+      "level": "Conductor",
+      "createdAt": "2025-03-29T12:02:00"
+    },
+    {
+      "id": "4",
+      "name": "DIEGO ENRIQUE QUISPE AGUILAR",
+      "dni": "71495691",
+      "level": "Conductor",
+      "createdAt": "2025-03-29T12:02:00"
+    },
+    {
+      "id": "5",
+      "name": "JESUS MAXIMO SHERON FLORES",
+      "dni": "07464472",
+      "level": "Conductor",
+      "createdAt": "2025-03-29T12:02:00"
+    },
+    {
+      "id": "6",
+      "name": "JOSE ARTEMIO SULCA VILLAR",
+      "dni": "07539133",
+      "level": "Conductor",
+      "createdAt": "2025-03-29T12:02:00"
+    },
+    {
+      "id": "7",
+      "name": "JOSE DAVID DAVILA CUBAS",
+      "dni": "45495272",
+      "level": "Conductor",
+      "createdAt": "2025-03-29T12:02:00"
+    },
+    {
+      "id": "8",
+      "name": "LENIN CARRASCO ACUÑA",
+      "dni": "46693171",
+      "level": "Conductor",
+      "createdAt": "2025-03-29T12:02:00"
+    },
+    {
+      "id": "9",
+      "name": "OSCAR MIGUEL CAJAHUANCA VIVANCO",
+      "dni": "10646997",
+      "level": "Conductor",
+      "createdAt": "2025-03-29T12:02:00"
+    },
+    {
+      "id": "10",
+      "name": "RICK KEVIN CORDOVA AGUILAR",
+      "dni": "74755634",
+      "level": "Conductor",
+      "createdAt": "2025-04-24T15:04:00"
+    },
+    {
+      "id": "11",
+      "name": "SERGIO CASAS RIOS",
+      "dni": "08654512",
+      "level": "Conductor",
+      "createdAt": "2025-03-29T12:02:00"
+    },
+    {
+      "id": "12",
+      "name": "WILBER JESUS POMA CONDORI",
+      "dni": "46307573",
+      "level": "Conductor",
+      "createdAt": "2025-03-29T12:02:00"
+    },
+    {
+      "id": "13",
+      "name": "YSIDRO ANDRES RUBIO PEREZ",
+      "dni": "16691234",
+      "level": "Conductor",
+      "createdAt": "2025-03-29T12:02:00"
+    },
+    {
+      "id": "14",
+      "name": "Administrador Sistema",
+      "dni": "70068162",
+      "level": "Administrador",
+      "createdAt": "2025-03-29T11:37:00"
+    }
+  ]
+}
