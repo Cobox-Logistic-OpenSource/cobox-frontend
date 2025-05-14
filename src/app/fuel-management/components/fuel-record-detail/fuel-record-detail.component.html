@@ -1,0 +1,192 @@
+<div class="fuel-record-detail-container">
+  <div class="header">
+    <h1>Detalles de Registro de Combustible</h1>
+    <div class="header-actions">
+      <button mat-raised-button color="accent" (click)="editRecord()">
+        <mat-icon>edit</mat-icon> Editar
+      </button>
+      <button mat-raised-button color="warn" (click)="deleteRecord()">
+        <mat-icon>delete</mat-icon> Eliminar
+      </button>
+      <button mat-raised-button (click)="navigateToList()">
+        <mat-icon>arrow_back</mat-icon> Volver
+      </button>
+    </div>
+  </div>
+
+  <div class="loading-indicator" *ngIf="loading$ | async">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <div class="content" *ngIf="record">
+    <div class="detail-section">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Información Básica</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="detail-row">
+            <div class="detail-label">Vehículo:</div>
+            <div class="detail-value">{{ record.vehiclePlate }}</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Fecha:</div>
+            <div class="detail-value">{{ record.date | date: 'dd/MM/yyyy HH:mm' }}</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Tipo de Combustible:</div>
+            <div class="detail-value">
+              <span class="fuel-type-badge" [ngClass]="getFuelTypeColor(record.fuelType)">
+                {{ record.fuelType }}
+              </span>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Estación:</div>
+            <div class="detail-value">{{ record.station }}</div>
+          </div>
+          <div class="detail-row" *ngIf="record.location">
+            <div class="detail-label">Ubicación:</div>
+            <div class="detail-value">{{ record.location }}</div>
+          </div>
+          <div class="detail-row" *ngIf="record.invoiceNumber">
+            <div class="detail-label">Factura Nº:</div>
+            <div class="detail-value">{{ record.invoiceNumber }}</div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Detalles de Repostaje</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="detail-row">
+            <div class="detail-label">Cantidad:</div>
+            <div class="detail-value">{{ record.quantity | number: '1.2-2' }} galones</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Costo Total:</div>
+            <div class="detail-value">{{ record.totalCost | currency }}</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Precio Unitario:</div>
+            <div class="detail-value">{{ record.totalCost / record.quantity | currency }} / galón</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Kilometraje:</div>
+            <div class="detail-value">{{ record.currentMileage | number }} km</div>
+          </div>
+          <div class="detail-row" *ngIf="record.previousMileage">
+            <div class="detail-label">Kilometraje Anterior:</div>
+            <div class="detail-value">{{ record.previousMileage | number }} km</div>
+          </div>
+          <div class="detail-row" *ngIf="record.distance">
+            <div class="detail-label">Distancia Recorrida:</div>
+            <div class="detail-value">{{ record.distance | number }} km</div>
+          </div>
+          <div class="detail-row" *ngIf="record.efficiency">
+            <div class="detail-label">Rendimiento:</div>
+            <div class="detail-value" [ngClass]="getEfficiencyColor(record.efficiency)">
+              {{ record.efficiency | number: '1.2-2' }} km/l
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card *ngIf="record.notes">
+        <mat-card-header>
+          <mat-card-title>Notas</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="notes-content">{{ record.notes }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="stats-section" *ngIf="vehicleStats">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Estadísticas del Vehículo</mat-card-title>
+          <mat-card-subtitle>{{ record.vehiclePlate }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="stats-row">
+            <div class="stat-card">
+              <div class="stat-value">{{ vehicleStats.averageEfficiency | number: '1.2-2' }}</div>
+              <div class="stat-label">km/l promedio</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">{{ vehicleStats.totalQuantity | number: '1.2-2' }}</div>
+              <div class="stat-label">Total de galones</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">{{ vehicleStats.totalCost | currency }}</div>
+              <div class="stat-label">Gasto total</div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="history-card">
+        <mat-card-header>
+          <mat-card-title>Historial de Repostajes</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <table mat-table [dataSource]="vehicleStats.records.slice(0, 5)" class="history-table">
+            <!-- Date Column -->
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef> Fecha </th>
+              <td mat-cell *matCellDef="let rec">
+                {{ rec.date | date: 'dd/MM/yyyy' }}
+                <span *ngIf="rec.id === record.id" class="current-record-badge">Actual</span>
+              </td>
+            </ng-container>
+
+            <!-- Quantity Column -->
+            <ng-container matColumnDef="quantity">
+              <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+              <td mat-cell *matCellDef="let rec"> {{ rec.quantity | number: '1.2-2' }} gal </td>
+            </ng-container>
+
+            <!-- Cost Column -->
+            <ng-container matColumnDef="totalCost">
+              <th mat-header-cell *matHeaderCellDef> Costo </th>
+              <td mat-cell *matCellDef="let rec"> {{ rec.totalCost | currency }} </td>
+            </ng-container>
+
+            <!-- Mileage Column -->
+            <ng-container matColumnDef="currentMileage">
+              <th mat-header-cell *matHeaderCellDef> Kilometraje </th>
+              <td mat-cell *matCellDef="let rec"> {{ rec.currentMileage | number }} km </td>
+            </ng-container>
+
+            <!-- Efficiency Column -->
+            <ng-container matColumnDef="efficiency">
+              <th mat-header-cell *matHeaderCellDef> Rendimiento </th>
+              <td mat-cell *matCellDef="let rec">
+                <span *ngIf="rec.efficiency" [ngClass]="getEfficiencyColor(rec.efficiency)">
+                  {{ rec.efficiency | number: '1.2-2' }} km/l
+                </span>
+                <span *ngIf="!rec.efficiency" class="no-data">--</span>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="historyTableColumns"></tr>
+            <tr mat-row *matRowDef="let rec; columns: historyTableColumns;"
+                [ngClass]="{'current-record-row': rec.id === record.id}"></tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- No record found message -->
+  <div *ngIf="!record && !(loading$ | async)" class="no-record-message">
+    <mat-icon>error_outline</mat-icon>
+    <p>No se encontró el registro de combustible solicitado.</p>
+    <button mat-raised-button color="primary" (click)="navigateToList()">
+      Volver al Listado
+    </button>
+  </div>
+</div>

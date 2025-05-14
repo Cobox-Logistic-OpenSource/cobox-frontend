@@ -1,0 +1,16 @@
+{
+  "fuelRecords": [
+    {
+      "id": 1,
+      "vehicle": "ABC-123",
+      "date": "2023-10-01T10:00:00",
+      "type": "Gasolina",
+      "quantity": 50,
+      "cost": 100,
+      "mileage": 15000,
+      "station": "Estación 1",
+      "location": "Ciudad A",
+      "notes": "Sin observaciones"
+    }
+  ]
+}
