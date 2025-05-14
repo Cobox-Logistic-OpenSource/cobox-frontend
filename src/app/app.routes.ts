@@ -10,7 +10,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/fleet', pathMatch: 'full' },
 
   // Añade una ruta para 'fleet' que redireccione a 'mileage' temporalmente
-  { path: 'fleet', redirectTo: '/mileage', pathMatch: 'full' },
+  //{ path: 'fleet', redirectTo: '/mileage', pathMatch: 'full' },
   { path: '', redirectTo: '/fleet', pathMatch: 'full' },
   { path: 'fleet', component: VehicleListComponent },
   { path: 'fleet/new', component: VehicleFormComponent },

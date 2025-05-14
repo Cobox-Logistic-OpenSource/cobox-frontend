@@ -27,6 +27,12 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
             </a>
           </div>
           <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" routerLink="/fleet" routerLinkActive="active">
+              <i class="bi bi-truck me-1"></i> Flota
+            </a>
+          </div>
+
+          <div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" routerLink="/registros" routerLinkActive="active">
               <i class="bi bi-journal-text me-1"></i> Registros
             </a>
