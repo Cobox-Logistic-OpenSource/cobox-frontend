@@ -21,6 +21,16 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
               <i class="bi bi-gear-fill me-1"></i> Servicios
             </a>
           </div>
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" routerLink="/mileage" routerLinkActive="active">
+              <i class="bi bi-speedometer2 me-1"></i> Kilometraje
+            </a>
+          </div>
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" routerLink="/fleet" routerLinkActive="active">
+              <i class="bi bi-truck me-1"></i> Flota
+            </a>
+          </div>
 
           <div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" routerLink="/registros" routerLinkActive="active">
@@ -82,7 +92,7 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
       align-items: center;
     }
 
-    .nav-link:hover, .nav-link.active {
+    .nav-link:hover, .nav-link{
       color: white;
     }
 
