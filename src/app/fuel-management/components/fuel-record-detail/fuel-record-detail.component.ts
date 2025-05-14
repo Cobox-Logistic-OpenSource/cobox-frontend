@@ -234,7 +234,7 @@ export class FuelRecordDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = this.route.snapshot.paramMap.get('id');  // Remove Number() conversion
     if (id) {
       this.loadRecord(id);
     } else {
@@ -244,15 +244,22 @@ export class FuelRecordDetailComponent implements OnInit {
     }
   }
 
-  loadRecord(id: number): void {
+
+  loadRecord(id: string): void {  // Changed from number to string
+    this.loading = true;
+
     this.fuelRecordService.getRecordById(id).subscribe({
       next: (data) => {
         this.record = data;
         this.loading = false;
       },
-      error: () => {
+      error: (error) => {
+        console.error('Error al cargar el registro:', error);
         this.loading = false;
-        this.goBack();
+
+        // Remove fake record creation and just show error
+        this.uiService.showError(`Error al cargar el registro: ${error.message || 'Error desconocido'}`);
+        setTimeout(() => this.goBack(), 3000);
       }
     });
   }

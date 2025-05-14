@@ -313,6 +313,7 @@ export class FuelRecordListComponent implements OnInit {
     }
   }
 
+// En fuel-record-list.component.ts
   addNewRecord(): void {
     if (this.recordForm.valid) {
       const formValue = this.recordForm.value;
@@ -321,11 +322,15 @@ export class FuelRecordListComponent implements OnInit {
       const dateValue = formValue.date instanceof Date ?
         formValue.date : new Date(formValue.date);
 
-      const newRecord: FuelRecord = {
+      // CAMBIO AQUÍ: Elimina la propiedad id para que json-server asigne uno automáticamente
+      const newRecord = {
         ...formValue,
-        id: 0, // Will be assigned by the server
+        // Elimina esta línea: id: 0,
         date: dateValue
       };
+
+      // Opcional: Asegúrate de que no haya un id
+      delete newRecord.id;
 
       this.fuelRecordService.createRecord(newRecord).subscribe({
         next: () => {
@@ -343,12 +348,11 @@ export class FuelRecordListComponent implements OnInit {
     }
   }
 
-  viewRecord(id: number): void {
-    // CAMBIO PRINCIPAL: Navegar a la vista de detalle en lugar de hacer console.log
+  viewRecord(id: string): void {  // Changed from number to string
     this.router.navigate(['/fuel-management', id]);
   }
 
-  confirmDeleteRecord(id: number): void {
+  confirmDeleteRecord(id: string): void {  // Changed from number to string
     this.uiService.showConfirmDialog(
       'Confirmar eliminación',
       '¿Estás seguro que deseas eliminar este registro?'
@@ -359,11 +363,11 @@ export class FuelRecordListComponent implements OnInit {
     });
   }
 
-  deleteRecord(id: number): void {
+  deleteRecord(id: string): void {  // Changed from number to string
     this.fuelRecordService.deleteRecord(id).subscribe({
       next: () => {
         this.uiService.showSuccess('Registro eliminado exitosamente');
-        this.loadRecords(); // Reload the list
+        this.loadRecords();
       }
     });
   }

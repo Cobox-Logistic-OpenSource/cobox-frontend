@@ -31,6 +31,13 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
             </a>
           </div>
 
+          <!-- Agregamos el enlace de Gestión de Combustible -->
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" routerLink="/fuel-management" routerLinkActive="active">
+              <i class="bi bi-fuel-pump me-1"></i> Combustible
+            </a>
+          </div>
+
           <div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" routerLink="/registros" routerLinkActive="active">
               <i class="bi bi-journal-text me-1"></i> Registros
@@ -91,7 +98,7 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
       align-items: center;
     }
 
-    .nav-link:hover, .nav-link{
+    .nav-link:hover, .nav-link {
       color: white;
     }
 

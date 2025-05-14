@@ -114,18 +114,34 @@
       "createdAt": "2023-05-13T09:00:00.000Z"
     }
   ],
-  "fuelRecords": [
+  "fuel-records": [
     {
-      "id": 1,
-      "vehicle": "ABC-123",
-      "date": "2023-10-01T10:00:00",
-      "type": "Gasolina",
-      "quantity": 50,
-      "cost": 100,
-      "mileage": 15000,
-      "station": "Estación 1",
-      "location": "Ciudad A",
-      "notes": "Sin observaciones"
+      "id": "1",
+      "vehicleId": 13221,
+      "vehiclePlate": "ABC-123",
+      "date": "2025-05-22T00:00:00.000Z",
+      "fuelType": "Gasolina Premium",
+      "quantity": 0.09,
+      "totalCost": 0.07,
+      "currentMileage": 10,
+      "station": "AVERAA",
+      "location": "DASDAS",
+      "invoiceNumber": "12312241",
+      "notes": "DASDASD"
+    },
+    {
+      "id": "2252",
+      "vehicleId": 9,
+      "vehiclePlate": "ABC-123",
+      "date": "2025-05-14T00:00:00.000Z",
+      "fuelType": "Gasolina",
+      "quantity": 0.1,
+      "totalCost": 0.15,
+      "currentMileage": 18,
+      "station": "aaaaaa",
+      "location": "aaaaaaaaaaa",
+      "invoiceNumber": "111111111111111",
+      "notes": "aaaaaaaaaaaaaaa"
     }
   ]
 }

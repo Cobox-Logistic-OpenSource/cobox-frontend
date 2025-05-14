@@ -1,11 +1,11 @@
 // fuel-record.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, map, catchError, throwError } from 'rxjs';
+import {Observable, map, catchError, throwError} from 'rxjs';
 import { FuelRecord, FuelRecordDTO, FuelRecordFilter } from '../models/fuel-record.model';
 import { environment } from '../../environments/environment';
 import { FuelUiService } from './fuel-ui.service';
-import { FuelType } from '../models/fuel-type.enum'; // Add this missing import
+import { FuelType } from '../models/fuel-type.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -67,18 +67,21 @@ export class FuelRecordService {
       );
   }
 
+
   /**
    * Get a specific fuel record by ID
    */
-  getRecordById(id: number): Observable<FuelRecord> {
-    return this.http.get<FuelRecordDTO>(`${this.apiUrl}/${id}`)
-      .pipe(
-        map(record => this.mapToFuelRecord(record)),
-        catchError(error => {
-          this.uiService.showError(`Error al cargar el registro #${id}`);
-          return throwError(() => error);
-        })
-      );
+  getRecordById(id: string): Observable<FuelRecord> {  // Changed from number to string
+    const url = `${this.apiUrl}/${id}`;
+
+    return this.http.get<FuelRecordDTO>(url).pipe(
+      map(record => this.mapToFuelRecord(record)),
+      catchError(error => {
+        console.error(`Error fetching record with ID ${id}:`, error);
+        this.uiService.showError(`Error al cargar el registro #${id}`);
+        return throwError(() => error);
+      })
+    );
   }
 
   /**
@@ -120,8 +123,17 @@ export class FuelRecordService {
   /**
    * Create a new fuel record
    */
-  createRecord(record: FuelRecord): Observable<FuelRecord> {
-    const recordDTO = this.mapToFuelRecordDTO(record);
+  // En fuel-record.service.ts
+  createRecord(record: any): Observable<FuelRecord> {
+    // Crea una copia y elimina el id si existe
+    const recordDTO = { ...record };
+    delete recordDTO.id;
+
+    // Si la fecha es un objeto Date, conviértela a string
+    if (recordDTO.date instanceof Date) {
+      recordDTO.date = recordDTO.date.toISOString();
+    }
+
     return this.http.post<FuelRecordDTO>(this.apiUrl, recordDTO)
       .pipe(
         map(response => this.mapToFuelRecord(response)),
@@ -135,7 +147,7 @@ export class FuelRecordService {
   /**
    * Update an existing fuel record
    */
-  updateRecord(id: number, record: FuelRecord): Observable<FuelRecord> {
+  updateRecord(id: string, record: FuelRecord): Observable<FuelRecord> {  // Changed from number to string
     const recordDTO = this.mapToFuelRecordDTO(record);
     return this.http.put<FuelRecordDTO>(`${this.apiUrl}/${id}`, recordDTO)
       .pipe(
@@ -150,7 +162,7 @@ export class FuelRecordService {
   /**
    * Delete a fuel record
    */
-  deleteRecord(id: number): Observable<void> {
+  deleteRecord(id: string): Observable<void> {  // Changed from number to string
     return this.http.delete<void>(`${this.apiUrl}/${id}`)
       .pipe(
         catchError(error => {

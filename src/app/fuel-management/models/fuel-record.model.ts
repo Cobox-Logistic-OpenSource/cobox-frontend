@@ -2,7 +2,7 @@
 import { FuelType } from './fuel-type.enum';
 
 export interface FuelRecord {
-  id: number;
+  id: string;  // Changed from number to string
   vehicleId: number;
   vehiclePlate: string;
   date: Date;
@@ -21,7 +21,7 @@ export interface FuelRecord {
 }
 
 export interface FuelRecordDTO {
-  id: number;
+  id: string;  // Changed from number to string
   vehicleId: number;
   vehiclePlate: string;
   date: string; // ISO string

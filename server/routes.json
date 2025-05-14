@@ -1,3 +1,5 @@
 {
-  "/api/v1/*": "/$1"
+  "/api/v1/*": "/$1",
+  "/fuel-records/:id": "/fuel-records/:id",
+  "/fuel-records": "/fuel-records"
 }
