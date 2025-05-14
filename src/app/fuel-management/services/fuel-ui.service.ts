@@ -1,7 +1,9 @@
+// fuel-ui.service.ts
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -48,26 +50,35 @@ export class FuelUiService {
 
     return dialogRef.afterClosed();
   }
-}
 
-// Simple component for the confirmation dialog
-import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+  /**
+   * Format currency values
+   */
+  formatCurrency(value: number): string {
+    return `S/ ${value.toFixed(2)}`;
+  }
 
-@Component({
-  selector: 'app-confirm-dialog',
-  template: `
-    <h2 mat-dialog-title>{{ data.title }}</h2>
-    <mat-dialog-content>{{ data.message }}</mat-dialog-content>
-    <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cancelar</button>
-      <button mat-button color="warn" [mat-dialog-close]="true">Confirmar</button>
-    </mat-dialog-actions>
-  `
-})
-export class ConfirmDialogComponent {
-  constructor(
-    public dialogRef: MatDialogRef<ConfirmDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { title: string; message: string }
-  ) {}
+  /**
+   * Format volume values
+   */
+  formatVolume(value: number): string {
+    return `${value.toFixed(2)} gal`;
+  }
+
+  /**
+   * Format efficiency values
+   */
+  formatEfficiency(value?: number): string {
+    if (value === undefined || value === null) {
+      return 'N/A';
+    }
+    return `${value.toFixed(2)} km/l`;
+  }
+
+  /**
+   * Format date values
+   */
+  formatDate(date: Date): string {
+    return date.toLocaleDateString();
+  }
 }
