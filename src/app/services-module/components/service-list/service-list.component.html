@@ -1,0 +1,58 @@
+<!-- src/app/services-module/components/service-list/service-list.component.html -->
+<div class="content-container">
+  <div class="module-header">
+    <h1 class="module-title">Servicios</h1>
+  </div>
+
+  <table class="module-table">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Fecha Serv.</th>
+        <th>Ruta</th>
+        <th>Conductor</th>
+        <th>Placa</th>
+        <th>Hora Salida</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let service of services">
+        <td>{{ service.id }}</td>
+        <td>{{ service.date | date:'dd/MM/yyyy' }}</td>
+        <td>{{ service.route }}</td>
+        <td>{{ service.driver }}</td>
+        <td>{{ service.plate }}</td>
+        <td>{{ service.departureTime }}</td>
+        <td class="actions-cell">
+          <!-- Estados con botones de acción -->
+          <div class="service-actions">
+            <!-- Estado FINALIZADO -->
+            <div *ngIf="service.status === 'COMPLETED'" class="status-badges">
+              <span class="status-badge completed-badge">FINALIZADO</span>
+              <button class="btn-cancel">
+                <i class="bi bi-x"></i> FINALIZADO
+              </button>
+            </div>
+            
+            <!-- Estado EN PROGRESO -->
+            <div *ngIf="service.status === 'IN_PROGRESS'" class="status-badges">
+              <span class="status-badge progress-badge">EN PROGRESO</span>
+              <button class="btn-start" (click)="startService(service)">
+                <i class="bi bi-play-fill"></i> INICIAR SERVICIO
+              </button>
+            </div>
+            
+            <!-- Estado PENDIENTE -->
+            <div *ngIf="service.status === 'PENDING'" class="status-badges">
+              <span class="status-badge pending-badge">PENDIENTE</span>
+              <button class="btn-start-green" (click)="startService(service)">
+                <i class="bi bi-play-fill"></i> INICIAR SERVICIO
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,86 @@
+<div class="content-container">
+  <h1 class="page-title">Registros de Combustible por Código de Servicio</h1>
+  
+  <div class="filter-section">
+    <form [formGroup]="filterForm">
+      <div class="filter-row">
+        <div class="filter-group">
+          <label for="serviceId">Código de Servicio</label>
+          <input id="serviceId" formControlName="serviceId" type="text" class="form-control">
+        </div>
+        
+        <div class="filter-group">
+          <label for="plate">Placa</label>
+          <input id="plate" formControlName="plate" type="text" class="form-control">
+        </div>
+        
+        <div class="filter-group">
+          <label for="startDate">Fecha Desde</label>
+          <input id="startDate" formControlName="startDate" type="date" class="form-control">
+        </div>
+        
+        <div class="filter-group">
+          <label for="endDate">Fecha Hasta</label>
+          <input id="endDate" formControlName="endDate" type="date" class="form-control">
+        </div>
+      </div>
+      
+      <div class="filter-actions">
+        <button type="button" class="btn btn-primary" (click)="searchRecords()">
+          <mat-icon>search</mat-icon> Buscar
+        </button>
+        <button type="button" class="btn btn-outline-secondary" (click)="clearFilters()">
+          <mat-icon>clear</mat-icon> Limpiar Filtros
+        </button>
+        <button type="button" class="btn btn-outline-primary" (click)="exportToExcel()">
+          <mat-icon>file_download</mat-icon> Exportar a Excel
+        </button>
+      </div>
+    </form>
+  </div>
+  
+  <div class="card">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Código de Servicio</th>
+          <th>Total Registros</th>
+          <th>Fecha Inicial</th>
+          <th>Fecha Final</th>
+          <th>Total Combustible</th>
+          <th>Placas</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of fuelRecordSummaries">
+          <td>{{ record.serviceId }}</td>
+          <td>{{ record.totalRecords }}</td>
+          <td>{{ record.initialDate | date:'dd/MM/yyyy HH:mm' }}</td>
+          <td>{{ record.finalDate | date:'dd/MM/yyyy HH:mm' }}</td>
+          <td>{{ record.totalFuel }} galones</td>
+          <td>{{ record.plates }}</td>
+          <td>
+            <button class="btn btn-info btn-sm" (click)="viewDetails(record.serviceId)">
+              <mat-icon>visibility</mat-icon> Ver Detalle
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="pagination">
+    <button class="page-link" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <span *ngFor="let page of getPages()">
+      <button class="page-link" [class.active]="page === currentPage" (click)="goToPage(page)">
+        {{ page }}
+      </button>
+    </span>
+    <button class="page-link" [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</div>

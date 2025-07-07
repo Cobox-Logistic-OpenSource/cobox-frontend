@@ -1,0 +1,115 @@
+/* Estilos para el componente de gestión de usuarios */
+.content-container {
+  padding: 20px;
+}
+
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.module-title {
+  color: #0d6efd;
+  font-size: 24px;
+  margin: 0;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-success {
+  background-color: #198754;
+  color: white;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #157347;
+}
+
+.module-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.module-table th,
+.module-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.module-table th {
+  background-color: #f8f9fa;
+  font-weight: 500;
+}
+
+.module-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.user-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.badge-admin {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.badge-driver {
+  background-color: #6c757d;
+  color: white;
+}
+
+.actions-column {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-primary-action {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.btn-primary-action:hover {
+  background-color: #0b5ed7;
+}
+
+.btn-danger-action {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-danger-action:hover {
+  background-color: #bb2d3b;
+}

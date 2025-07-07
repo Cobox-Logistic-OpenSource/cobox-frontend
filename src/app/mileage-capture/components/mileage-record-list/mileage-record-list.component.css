@@ -1,0 +1,21 @@
+﻿/* Estilos específicos para las badges de propósito */
+.purpose-delivery {
+  background-color: #28a745;
+}
+
+.purpose-pickup {
+  background-color: #17a2b8;
+}
+
+.purpose-maintenance {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.purpose-transfer {
+  background-color: #6610f2;
+}
+
+.purpose-other {
+  background-color: #6c757d;
+}

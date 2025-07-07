@@ -1,0 +1,169 @@
+﻿<section class="blue-header">
+  <h1>{{ isEditMode ? 'Editar' : 'Nuevo' }} Registro de Kilometraje</h1>
+</section>
+
+<div *ngIf="loading" class="text-center my-5">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Cargando...</span>
+  </div>
+  <p class="mt-2">Cargando datos...</p>
+</div>
+
+<div *ngIf="error" class="alert alert-danger">
+  {{ errorMessage }}
+</div>
+
+<section *ngIf="!loading && !error" class="form-section">
+  <form [formGroup]="recordForm" (ngSubmit)="onSubmit()">
+    <div class="card">
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="vehicleId" class="form-label">Vehículo *</label>
+            <input
+              type="text"
+              id="vehicleId"
+              formControlName="vehicleId"
+              class="form-control"
+              [ngClass]="{'is-invalid': recordForm.get('vehicleId')?.invalid && recordForm.get('vehicleId')?.touched}"
+            >
+            <div *ngIf="recordForm.get('vehicleId')?.invalid && recordForm.get('vehicleId')?.touched" class="invalid-feedback">
+              Vehículo es requerido
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="date" class="form-label">Fecha *</label>
+            <input
+              type="date"
+              id="date"
+              formControlName="date"
+              class="form-control"
+              [ngClass]="{'is-invalid': recordForm.get('date')?.invalid && recordForm.get('date')?.touched}"
+            >
+            <div *ngIf="recordForm.get('date')?.invalid && recordForm.get('date')?.touched" class="invalid-feedback">
+              Fecha es requerida
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="startOdometer" class="form-label">Kilometraje Inicial *</label>
+            <div class="input-group">
+              <input
+                type="number"
+                id="startOdometer"
+                formControlName="startOdometer"
+                class="form-control"
+                min="0"
+                [ngClass]="{'is-invalid': recordForm.get('startOdometer')?.invalid && recordForm.get('startOdometer')?.touched}"
+              >
+              <span class="input-group-text">km</span>
+              <div *ngIf="recordForm.get('startOdometer')?.invalid && recordForm.get('startOdometer')?.touched" class="invalid-feedback">
+                Kilometraje inicial es requerido y debe ser mayor o igual a 0
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <label for="endOdometer" class="form-label">Kilometraje Final *</label>
+            <div class="input-group">
+              <input
+                type="number"
+                id="endOdometer"
+                formControlName="endOdometer"
+                class="form-control"
+                min="0"
+                [ngClass]="{'is-invalid': recordForm.get('endOdometer')?.invalid && recordForm.get('endOdometer')?.touched}"
+              >
+              <span class="input-group-text">km</span>
+              <div *ngIf="recordForm.get('endOdometer')?.invalid && recordForm.get('endOdometer')?.touched" class="invalid-feedback">
+                Kilometraje final es requerido y debe ser mayor o igual a 0
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <label for="distance" class="form-label">Distancia</label>
+            <div class="input-group">
+              <input
+                type="number"
+                id="distance"
+                formControlName="distance"
+                class="form-control"
+                readonly
+              >
+              <span class="input-group-text">km</span>
+            </div>
+            <small class="form-text text-muted">Calculado automáticamente</small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="purpose" class="form-label">Propósito *</label>
+            <select
+              id="purpose"
+              formControlName="purpose"
+              class="form-select"
+              [ngClass]="{'is-invalid': recordForm.get('purpose')?.invalid && recordForm.get('purpose')?.touched}"
+            >
+              <option *ngFor="let purpose of purposeOptions" [value]="purpose">
+                {{ purpose }}
+              </option>
+            </select>
+            <div *ngIf="recordForm.get('purpose')?.invalid && recordForm.get('purpose')?.touched" class="invalid-feedback">
+              Propósito es requerido
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="driverId" class="form-label">Conductor</label>
+            <input
+              type="text"
+              id="driverId"
+              formControlName="driverId"
+              class="form-control"
+            >
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="route" class="form-label">Ruta</label>
+            <input
+              type="text"
+              id="route"
+              formControlName="route"
+              class="form-control"
+              placeholder="Ej: Lima - Callao"
+            >
+          </div>
+
+          <div class="col-md-6">
+            <label for="notes" class="form-label">Observaciones</label>
+            <textarea
+              id="notes"
+              formControlName="notes"
+              class="form-control"
+              rows="3"
+              placeholder="Ingrese observaciones adicionales"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end mt-4">
+          <button type="button" class="btn btn-secondary me-2" (click)="cancel()">Cancelar</button>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="saving || recordForm.invalid">
+            <span *ngIf="saving" class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+            {{ isEditMode ? 'Actualizar' : 'Guardar' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>

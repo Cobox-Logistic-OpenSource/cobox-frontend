@@ -1,0 +1,100 @@
+﻿<div class="content-container">
+  <div class="module-header">
+    <h1 class="module-title">Registros de Kilometraje</h1>
+    <button class="btn btn-primary" (click)="createRecord()">
+      <i class="bi bi-plus-circle"></i> Nuevo Registro
+    </button>
+  </div>
+  
+  <div class="module-filters">
+    <div class="filter-row">
+      <div class="filter-group">
+        <label for="startDate">Fecha Desde</label>
+        <input id="startDate" type="date" class="form-control" [(ngModel)]="startDate">
+      </div>
+      
+      <div class="filter-group">
+        <label for="endDate">Fecha Hasta</label>
+        <input id="endDate" type="date" class="form-control" [(ngModel)]="endDate">
+      </div>
+      
+      <div class="filter-group">
+        <label for="vehicleId">Placa Vehículo</label>
+        <input id="vehicleId" type="text" class="form-control" [(ngModel)]="vehicleId" placeholder="Ingrese placa">
+      </div>
+    </div>
+    
+    <div class="filter-actions">
+      <button type="button" class="btn btn-primary" (click)="filter()">
+        <i class="bi bi-search"></i> Filtrar
+      </button>
+      <button type="button" class="btn btn-outline-secondary" (click)="resetFilters()">
+        <i class="bi bi-x"></i> Limpiar
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="text-center my-4">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+    <p class="mt-2">Cargando registros...</p>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <table class="module-table" *ngIf="!loading && !error">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Vehículo</th>
+        <th>Propósito</th>
+        <th>Inicio Km</th>
+        <th>Fin Km</th>
+        <th>Distancia</th>
+        <th>Conductor</th>
+        <th>Ruta</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of mileageRecords">
+        <td>{{ formatDate(record.date) }}</td>
+        <td>{{ record.vehicleId }}</td>
+        <td>
+          <span class="status-badge" [ngClass]="getPurposeClass(record.purpose)">
+            {{ mileageUI.getPurposeLabel(record.purpose) }}
+          </span>
+        </td>
+        <td>{{ record.startOdometer }} km</td>
+        <td>{{ record.endOdometer }} km</td>
+        <td><strong>{{ mileageUI.formatDistance(record.distance) }}</strong></td>
+        <td>{{ record.driverId || 'N/A' }}</td>
+        <td>{{ record.route || 'N/A' }}</td>
+        <td>
+          <div class="d-flex gap-2">
+            <button class="action-btn btn-info-action" (click)="viewDetails(record.id)" title="Ver detalles">
+              <i class="bi bi-eye"></i>
+            </button>
+            <button class="action-btn btn-primary-action" (click)="editRecord(record.id)" title="Editar">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="action-btn btn-danger-action" (click)="deleteRecord(record.id)" title="Eliminar">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && !error && mileageRecords.length === 0" class="alert alert-info text-center my-4">
+    <i class="bi bi-inbox mr-2"></i>
+    <p>No hay registros de kilometraje disponibles</p>
+    <button class="btn btn-outline-primary mt-3" (click)="createRecord()">
+      <i class="bi bi-plus-circle"></i> Crear nuevo registro
+    </button>
+  </div>
+</div>

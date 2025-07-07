@@ -1,0 +1,111 @@
+/* src/app/services-module/components/service-list/service-list.component.css */
+
+/* Estilos para la tabla */
+.actions-cell {
+  padding: 0.5rem !important;
+}
+
+.service-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-badges {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  min-width: 100px;
+}
+
+.pending-badge {
+  background-color: #6c757d;
+  color: white;
+}
+
+.progress-badge {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.completed-badge {
+  background-color: #198754;
+  color: white;
+}
+
+/* Botones de acción */
+.btn-start {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn-start:hover {
+  background-color: #0b5ed7;
+}
+
+.btn-start-green {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  background-color: #198754;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn-start-green:hover {
+  background-color: #157347;
+}
+
+.btn-cancel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.btn-cancel:hover {
+  background-color: #bb2d3b;
+}
+
+/* Iconos */
+.bi-play-fill {
+  margin-right: 4px;
+}
+
+.bi-x {
+  margin-right: 4px;
+  font-weight: bold;
+}

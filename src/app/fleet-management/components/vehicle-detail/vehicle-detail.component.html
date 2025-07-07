@@ -1,0 +1,124 @@
+﻿<div class="vehicle-detail-container">
+  <div class="back-button">
+    <button mat-button color="primary" (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon> Volver
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Cargando información del vehículo...</p>
+  </div>
+
+  <div *ngIf="error" class="error-container">
+    <mat-icon color="warn">error</mat-icon>
+    <p>Error al cargar la información del vehículo. Intente nuevamente.</p>
+    <button mat-raised-button color="primary" (click)="goBack()">Volver a la lista</button>
+  </div>
+
+  <div *ngIf="!loading && !error && vehicle" class="vehicle-content">
+    <mat-card class="vehicle-card mat-elevation-z4">
+      <mat-card-header>
+        <div mat-card-avatar class="vehicle-header-image">
+          <mat-icon>directions_car</mat-icon>
+        </div>
+        <mat-card-title>{{vehicle.brand}} {{vehicle.model}}</mat-card-title>
+        <mat-card-subtitle>Placa: {{vehicle.plate}}</mat-card-subtitle>
+        <span [ngClass]="getStatusClass(vehicle.status)" class="status-badge">
+          {{getVehicleStatusLabel(vehicle.status)}}
+        </span>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <span class="detail-label">Tipo:</span>
+            <span class="detail-value">{{getVehicleTypeLabel(vehicle.type)}}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Año:</span>
+            <span class="detail-value">{{vehicle.year}}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Kilometraje actual:</span>
+            <span class="detail-value">{{vehicle.currentMileage}} km</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Capacidad de carga:</span>
+            <span class="detail-value">{{vehicle.loadCapacity}} kg</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Capacidad del tanque:</span>
+            <span class="detail-value">{{vehicle.tankCapacity}} L</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Último mantenimiento:</span>
+            <span class="detail-value">{{vehicle.lastMaintenance | date: 'dd/MM/yyyy'}}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Estado:</span>
+            <span class="detail-value">{{vehicle.active ? 'Activo' : 'Inactivo'}}</span>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="editVehicle()">
+          <mat-icon>edit</mat-icon> Editar
+        </button>
+        <button mat-button [matMenuTriggerFor]="statusMenu">
+          <mat-icon>update</mat-icon> Cambiar Estado
+        </button>
+        <mat-menu #statusMenu="matMenu">
+          <button mat-menu-item (click)="updateStatus(vehicleStatusEnum.AVAILABLE)">
+            <span>Disponible</span>
+          </button>
+          <button mat-menu-item (click)="updateStatus(vehicleStatusEnum.IN_ROUTE)">
+            <span>En Ruta</span>
+          </button>
+          <button mat-menu-item (click)="updateStatus(vehicleStatusEnum.IN_MAINTENANCE)">
+            <span>En Mantenimiento</span>
+          </button>
+          <button mat-menu-item (click)="updateStatus(vehicleStatusEnum.OUT_OF_SERVICE)">
+            <span>Fuera de Servicio</span>
+          </button>
+        </mat-menu>
+      </mat-card-actions>
+    </mat-card>
+    <!-- Aquí podrías añadir secciones para historiales -->
+    <div class="history-sections">
+      <mat-card class="history-card mat-elevation-z3">
+        <mat-card-header>
+          <mat-card-title>Historial de Kilometraje</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <!-- Contenido del historial de kilometraje -->
+          <p *ngIf="true" class="empty-state">No hay registros de kilometraje disponibles para este vehículo.</p>
+          <!-- Aquí se integraría con el módulo de kilometraje cuando esté disponible -->
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="history-card mat-elevation-z3">
+        <mat-card-header>
+          <mat-card-title>Historial de Combustible</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <!-- Contenido del historial de combustible -->
+          <p *ngIf="true" class="empty-state">No hay registros de combustible disponibles para este vehículo.</p>
+          <!-- Aquí se integraría con el módulo de combustible cuando esté disponible -->
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="history-card mat-elevation-z3">
+        <mat-card-header>
+          <mat-card-title>Historial de Mantenimiento</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <!-- Contenido del historial de mantenimiento -->
+          <p *ngIf="true" class="empty-state">No hay registros de mantenimiento disponibles para este vehículo.</p>
+          <!-- Aquí se integraría con el módulo de mantenimiento cuando esté disponible -->
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

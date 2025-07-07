@@ -1,0 +1,86 @@
+﻿<div class="content-container">
+  <div class="module-header">
+    <h1 class="module-title">Gestión de Vehículos</h1>
+    <button class="btn btn-primary" (click)="addNewVehicle()">
+      <i class="bi bi-plus-circle"></i> Nuevo Vehículo
+    </button>
+  </div>
+  
+  <div class="filter-section">
+    <label>Filtrar</label>
+    <input type="text" class="form-control" (keyup)="applyFilter($event)" placeholder="Buscar por marca, modelo o placa...">
+  </div>
+
+  <table class="module-table">
+    <thead>
+      <tr>
+        <th>Placa</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Tipo</th>
+        <th>Estado</th>
+        <th>Kilometraje</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vehicle of filteredVehicles">
+        <td>{{ vehicle.plate }}</td>
+        <td>{{ vehicle.brand }}</td>
+        <td>{{ vehicle.model }}</td>
+        <td>{{ getVehicleTypeLabel(vehicle.type) }}</td>
+        <td>
+          <span class="status-badge" [ngClass]="getStatusClass(vehicle.status)">
+            {{ getVehicleStatusLabel(vehicle.status) }}
+          </span>
+        </td>
+        <td>{{ vehicle.currentMileage }} km</td>
+        <td class="actions-col">
+          <!-- Botones de acción con el estilo exacto de tu aplicación -->
+          <div class="action-buttons">
+            <button class="view-action-btn" (click)="viewVehicleDetails(vehicle.id)" title="Ver detalles">
+              <i class="bi bi-eye"></i>
+            </button>
+            <button class="edit-action-btn" (click)="editVehicle(vehicle.id)" title="Editar">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="delete-action-btn" (click)="deleteVehicle(vehicle.id)" title="Eliminar">
+              <i class="bi bi-trash"></i>
+            </button>
+            <div class="status-dropdown">
+              <button class="more-action-btn" id="dropdownMenuButton-{{vehicle.id}}" title="Más opciones">
+                <i class="bi bi-three-dots-vertical"></i>
+              </button>
+              <div class="dropdown-menu status-menu">
+                <a class="dropdown-item" (click)="updateStatus(vehicle.id, vehicleStatusEnum.AVAILABLE)">Disponible</a>
+                <a class="dropdown-item" (click)="updateStatus(vehicle.id, vehicleStatusEnum.IN_ROUTE)">En Ruta</a>
+                <a class="dropdown-item" (click)="updateStatus(vehicle.id, vehicleStatusEnum.IN_MAINTENANCE)">En Mantenimiento</a>
+                <a class="dropdown-item" (click)="updateStatus(vehicle.id, vehicleStatusEnum.OUT_OF_SERVICE)">Fuera de Servicio</a>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination-container" *ngIf="totalPages > 1">
+    <nav aria-label="Paginación">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <button class="page-link" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+        </li>
+        <li class="page-item" *ngFor="let page of getPagesArray()" [class.active]="page === currentPage">
+          <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <button class="page-link" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
